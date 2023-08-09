@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [Header("Movement")]
-    public float moveSpeed;
+    public float walkSpeed;
+    public float sprintSpeed;
     public float groundDrag;
 
     public float jumpForce;
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
 
     bool readyToJump;
+    float moveSpeed;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode sprintKey = KeyCode.LeftShift;
 
     public Transform orientation;
 
@@ -42,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
 
         ResetJump();
+
+        moveSpeed = walkSpeed;
     }
 
     // Update is called once per frame
@@ -77,6 +82,15 @@ public class PlayerMovement : MonoBehaviour
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
+        }
+
+        if(Input.GetKey(sprintKey)) // add "&& grounded" to disable sprint jumping. I am leaving it on for now cuz its fun
+        {
+            moveSpeed = sprintSpeed;
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
         }
     }
 
