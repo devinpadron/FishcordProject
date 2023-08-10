@@ -97,12 +97,15 @@ public class GunMechanic : MonoBehaviour
         }
 
         // Shake Camera
-        myShaker.Shake(ShakePreset);
+        if (myShaker != null || ShakePreset != null)
+            myShaker.Shake(ShakePreset);
 
         // Effects
         //Instantiate(bulletHole, rayHit.point, Quaternion.FromToRotation(Vector3.forward, rayHit.normal));
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
-        Gunshot.Play();
+        
+        if (Gunshot != null)
+            Gunshot.Play();
 
         bulletsLeft--;
         bulletsShot--;
