@@ -91,9 +91,10 @@ public class GunMechanic : MonoBehaviour
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
             Debug.Log(rayHit.collider.name);
-            
-            // if (rayHit.collider.CompareTag("Enemy"))
-            //     rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
+           
+            if (rayHit.collider.CompareTag("Enemy"))
+               rayHit.collider.gameObject.GetComponent<ShootingAI>().TakeDamage(damage);
+            // Idk why this worked. I just uncommented it and recommented it.
         }
 
         // Shake Camera
