@@ -3221,7 +3221,6 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
-  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3311,19 +3310,6 @@ MonoBehaviour:
   sensX: 600
   sensY: 600
   orientation: {fileID: 1793138070}
---- !u!114 &963194230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1697a0132719bae458729c9e99c0c716, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addToGlobalShakers: 0
 --- !u!1 &982306295
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,9 +3747,9 @@ MonoBehaviour:
   bulletsPerTap: 1
   allowButtonHold: 1
   muzzleFlash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
-  myShaker: {fileID: 963194230}
-  ShakePreset: {fileID: 11400000, guid: b8e0b1d87df09c94db66f5a8ae9fc014, type: 2}
-  Gunshot: {fileID: 1347876707}
+  myShaker: {fileID: 0}
+  ShakePreset: {fileID: 0}
+  Gunshot: {fileID: 0}
   fpsCam: {fileID: 963194227}
   attackPoint: {fileID: 2135704360}
   whatIsEnemy:
