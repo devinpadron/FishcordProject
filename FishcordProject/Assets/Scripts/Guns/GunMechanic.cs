@@ -6,7 +6,7 @@ using MilkShake;
 public class GunMechanic : MonoBehaviour
 {
     [Header("Gun Stats")]
-    public int damage;
+    public float damage;
     public float timeBetweenShots, spread, spreadMovementMult, range, reloadTime, weaponCooldown;
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
@@ -15,7 +15,7 @@ public class GunMechanic : MonoBehaviour
 
     [Header("Effects")]
     public GameObject muzzleFlash;
-    //public GameObject bulletHole;
+    public GameObject bulletHole;
     public Shaker myShaker;
     public ShakePreset ShakePreset;
     public AudioSource Gunshot;
@@ -93,8 +93,7 @@ public class GunMechanic : MonoBehaviour
             Debug.Log(rayHit.collider.name);
            
             if (rayHit.collider.CompareTag("Enemy"))
-               rayHit.collider.gameObject.GetComponent<ShootingAI>().TakeDamage(damage);
-            // Idk why this worked. I just uncommented it and recommented it.
+               rayHit.collider.gameObject.GetComponent<Enemy>().TakeDamage(damage);
         }
 
         // Shake Camera
@@ -102,8 +101,11 @@ public class GunMechanic : MonoBehaviour
             myShaker.Shake(ShakePreset);
 
         // Effects
-        //Instantiate(bulletHole, rayHit.point, Quaternion.FromToRotation(Vector3.forward, rayHit.normal));
-        Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+        if (bulletHole != null)
+            Instantiate(bulletHole, rayHit.point, Quaternion.FromToRotation(Vector3.forward, rayHit.normal));
+        
+        if (muzzleFlash != null)
+            Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
         
         if (Gunshot != null)
             Gunshot.Play();

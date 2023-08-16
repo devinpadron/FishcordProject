@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingAI : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 
     [Header("Stats")]
-    public int health;
+    public float health;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class ShootingAI : MonoBehaviour
         
     }
 
-    public void TakeDamage(int dmg)
+    public void TakeDamage(float dmg)
     {
         //Take dmg
         health -= dmg;
