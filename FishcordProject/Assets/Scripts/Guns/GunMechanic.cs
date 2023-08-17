@@ -29,7 +29,10 @@ public class GunMechanic : MonoBehaviour
 
     private void Update()
     {
+        if(Time.timeScale != 0f)
+        {
         MyInput();
+        }
     }
 
     private void Start()
